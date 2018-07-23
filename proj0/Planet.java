@@ -33,7 +33,7 @@ public class Planet {
     /**
      *   Calculatr the distance between two planets
      *   @param planet     planet need to be calculated
-     *   @return distance  distance between two planets
+     *   @return double  distance between two planets
      */
      public double calcDistance(Planet planet) {
          double dx = Math.abs(this.xxPos - planet.xxPos);
@@ -41,4 +41,18 @@ public class Planet {
          double r  = Math.sqrt(dx * dx + dy * dy);
          return r;
      }
+
+     /**
+      *   Calculatr a double describing the force exerted on this planet by the given planet
+      *   @param planet     planet need to be calculated
+      *   @return double    returns a double describing the force exerted on this planet by the given planet
+      */
+      public double calcForceExertedBy(Planet planet) {
+          double r = this.calcDistance(planet);
+          double G = 6.67e-11;
+          double force = (this.mass * planet.mass) * G / (r * r);
+          return force;
+      }
+
+
 }
