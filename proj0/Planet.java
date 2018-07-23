@@ -107,4 +107,21 @@ public class Planet {
           }
           return result;
       }
+
+      /** Determines how much the forces exerted on the planet will cause that planet to accelerate,
+       *  and the resulting change in the planet’s velocity and position in a small period of time dt
+       *
+       *  @param  dt small period of time
+       *  @param  fx x-force
+       *  @param  fy y-form
+       *
+       */
+      public void update(double dt, double fx, double fy) {
+          double ax = fx / this.mass;
+          double ay = fy / this.mass;
+          this.xxVel = this.xxVel + dt * ax;
+          this.yyVel = this.yyVel + dt * ay;
+          this.xxPos = this.xxPos + dt * this.xxVel;
+          this.yyPos = this.yyPos + dt * this.yyVel;
+      }
 }
