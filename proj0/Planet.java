@@ -80,4 +80,31 @@ public class Planet {
           return fy;
       }
 
+      /**  calculate the net X force exerted by all planets in that array upon the current Planet
+       *   @param planets     planets need to be calculated
+       *   @return double     return the net X force exerted by all planets in that array upon the current Planet
+       */
+      public double calcNetForceExertedByX (Planet[] planets) {
+          double result = 0.0;
+          for(int i = 0; i < planets.length; i++) {
+              if(!this.equals(planets[i])) {
+                  result += this.calcForceExertedByX(planets[i]);
+              }
+          }
+          return result;
+      }
+
+      /**  calculate the net Y force exerted by all planets in that array upon the current Planet
+       *   @param planets     planets need to be calculated
+       *   @return double     return the net X force exerted by all planets in that array upon the current Planet
+       */
+      public double calcNetForceExertedByY (Planet[] planets) {
+          double result = 0.0;
+          for(int i = 0; i < planets.length; i++) {
+              if(!this.equals(planets[i])) {
+                  result += this.calcForceExertedByY(planets[i]);
+              }
+          }
+          return result;
+      }
 }
