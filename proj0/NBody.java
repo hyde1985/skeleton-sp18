@@ -43,6 +43,9 @@ public class NBody {
 	   		StdDraw.clear();
 	   		StdDraw.picture(0, 0 ,"./images/starfield.jpg");
 
+	   		for(Planet planet: planets) {
+	   			planet.draw();
+	   		}
 	   }
 	
 }
