@@ -11,6 +11,10 @@ public class NBody {
 		   return radius;
 	   }
 
+	   /** Return an array of Planets corresponding to the planets in the file
+	   *  @param   imgFileName 
+	   *  @return  return an array of Planets corresponding to the planets in the file
+	   */
 	   public static Planet[] readPlanets(String fileName) {
 
 	   		In in = new In(fileName);
@@ -27,6 +31,18 @@ public class NBody {
 	   			planets[i] = new Planet(xxPos, yyPos, xxVel, yyVel, mass, imgFileName);
 	   		}
 	   		return planets;
+	   }
+
+	   public static void main(String[] args) {
+	   		double T         = Double.parseDouble(args[0]);
+	   		double dt        = Double.parseDouble(args[1]);
+	   		String fileName  = args[2];
+	   		Planet[] planets = readPlanets(fileName);
+	   		double radius    = readRadius(fileName);
+	   		StdDraw.setScale(-radius, radius);
+	   		StdDraw.clear();
+	   		StdDraw.picture(0, 0 ,"./images/starfield.jpg");
+
 	   }
 	
 }
