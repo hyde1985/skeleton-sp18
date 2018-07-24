@@ -36,8 +36,8 @@ public class Planet {
      *   @return double  distance between two planets
      */
      public double calcDistance(Planet planet) {
-         double dx = Math.abs(this.xxPos - planet.xxPos);
-         double dy = Math.abs(this.yyPos - planet.yyPos);
+         double dx = this.xxPos - planet.xxPos;
+         double dy = this.yyPos - planet.yyPos;
          double r  = Math.sqrt(dx * dx + dy * dy);
          return r;
      }
@@ -60,7 +60,7 @@ public class Planet {
        *   @return double    returns the force exerted in the X directions
        */
       public double calcForceExertedByX(Planet planet) {
-          double dx = Math.abs(this.xxPos - planet.xxPos);
+          double dx = planet.xxPos - this.xxPos;
           double r  = this.calcDistance(planet);
           double F  = this.calcForceExertedBy(planet);
           double fx = (F * dx) / r;
@@ -73,7 +73,7 @@ public class Planet {
        *   @return double    returns the force exerted in the Y directions
        */
       public double calcForceExertedByY(Planet planet) {
-          double dy = Math.abs(this.yyPos - planet.yyPos);
+          double dy = planet.yyPos - this.yyPos;
           double r  = this.calcDistance(planet);
           double F  = this.calcForceExertedBy(planet);
           double fy = (F * dy) / r;
@@ -87,7 +87,7 @@ public class Planet {
       public double calcNetForceExertedByX (Planet[] planets) {
           double result = 0.0;
           for(int i = 0; i < planets.length; i++) {
-              if(!this.equals(planets[i])) {
+              if(this.equals(planets[i]) != true) {
                   result += this.calcForceExertedByX(planets[i]);
               }
           }
@@ -101,7 +101,7 @@ public class Planet {
       public double calcNetForceExertedByY (Planet[] planets) {
           double result = 0.0;
           for(int i = 0; i < planets.length; i++) {
-              if(!this.equals(planets[i])) {
+              if(this.equals(planets[i]) != true) {
                   result += this.calcForceExertedByY(planets[i]);
               }
           }
